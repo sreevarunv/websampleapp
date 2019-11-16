@@ -1,0 +1,13 @@
+node{
+    stage('Git Checkout'){
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sreevarunv/websampleapp']]])
+    }
+    stage('Install maven'){
+      def mvn_home = tool name: 'maven', type: 'maven'
+      def path ="${mvn_home}/bin/mvn"
+      sh "${path} clean package"
+    }
+    stage('Deploy to tomcat'){
+        deploy adapters: [tomcat7(credentialsId: '2a9f02d5-3d8b-4676-8f54-433ece81d019', path: '', url: 'http://13.233.115.29:8090/')], contextPath: null, onFailure: false, war: '**/*.war'
+    }
+}
