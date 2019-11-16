@@ -22,7 +22,7 @@ pipeline{
            stage('copying warfile'){
                steps{
                    echo "deploying to tomcat"
-               sh 'cp **/.war /opt/tomcat/webapps/'
+               sh 'cp **/*.war /opt/tomcat/webapps/'
                 }
               }
          }
