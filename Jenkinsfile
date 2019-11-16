@@ -1,5 +1,5 @@
 pipeline{
-    agent varun
+    agent any
         stages{
             stage('compile stage'){
               steps{
