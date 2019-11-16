@@ -19,9 +19,9 @@ pipeline{
                  
               }
            }
-           stage('Deploy to tomcat'){
+           stage('copying warfile'){
                steps{
-               deploy adapters: [tomcat7(credentialsId: '2a9f02d5-3d8b-4676-8f54-433ece81d019', path: '', url: 'http://13.233.115.29:8090/')], contextPath: null, onFailure: false, war: '**/*.war'
+               sh cp /var/lib/jenkins/workspace/Pipeline-jenkinsfile-mvn-compile-test-deploy/target/SampleWebapp.war /opt/tomcat/webapps/
                 }
            }
          }
