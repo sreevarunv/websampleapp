@@ -22,7 +22,7 @@ pipeline{
            stage('copying warfile'){
                steps{
                    echo "deploying to tomcat"
-               sh 'sudo cp /var/lib/jenkins/workspace/Pipeline-jenkinsfile-mvn-compile-test-deploy/target/SampleWebapp.war /opt/tomcat/webapps/'
+               sh 'cp **/.war /opt/tomcat/webapps/'
                 }
               }
          }
